@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="90dp"
+    android:layout_height="90dp"
+    android:paddingStart="@dimen/margin_twice_half"
+    android:paddingEnd="@dimen/margin_twice_half">
+
+    <ImageView
+        tools:src="@drawable/sample_image"
+        android:id="@+id/iv_selected_photo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/image_selected"
+        android:scaleType="centerCrop" />
+
+    <ImageView
+        android:id="@+id/iv_cancel"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_margin="@dimen/margin_twice_half"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/image_cancel"
+        android:src="@drawable/ic_baseline_clear_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
