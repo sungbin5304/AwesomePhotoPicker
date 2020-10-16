@@ -13,8 +13,7 @@ import android.provider.MediaStore
 object PhotoUtil {
     fun getAllPath(
         context: Context,
-        fileExtensionsFilter: FileExtensions? = null,
-        customFileFilter: FileExtensions? = null // todo: filter
+        photoFilter: PhotoFilter? = null // todo: filter
     ): ArrayList<Uri> {
         val uriExternal = MediaStore.Images.Media.EXTERNAL_CONTENT_URI
         val cursor: Cursor?
@@ -26,11 +25,11 @@ object PhotoUtil {
             val columnIndexId = cursor.getColumnIndexOrThrow(MediaStore.Images.Media._ID)
             var index = 0
             while (cursor.moveToNext()) {
-                val imageId = cursor.getLong(columnIndexId).toString()
+                val imageId = cursor.getString(columnIndexId)
                 val imageUri = Uri.withAppendedPath(uriExternal, imageId)
                 list.add(imageUri)
                 index++
-                if (index > 20) break
+                if (index > 18) break
             }
             cursor.close()
         }
@@ -43,9 +42,9 @@ object PhotoUtil {
     fun createCustomFileFilter() = true
 
     @Suppress("DEPRECATION")
-    fun convertUriToPath(context: Context, contentUri: Uri?): String? {
+    fun convertUriToPath(context: Context, contentUri: Uri): String? {
         val projection = arrayOf(MediaStore.Images.Media.DATA)
-        return context.contentResolver.query(contentUri!!, projection, null, null, null)
+        return context.contentResolver.query(contentUri, projection, null, null, null)
             ?.use { cursor ->
                 val columnIndex = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
                 cursor.moveToFirst()

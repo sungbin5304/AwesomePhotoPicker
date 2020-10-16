@@ -11,20 +11,20 @@
         android:focusable="true">
 
         <ImageView
-            android:id="@+id/iv_photo"
+            android:id="@+id/iv_tile_photo"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:adjustViewBounds="true"
             android:contentDescription="@string/image_photo"
             android:scaleType="centerInside"
-            android:src="@drawable/ic_baseline_photo_24"
+            tools:src="@drawable/sample_image"
             tools:scaleType="centerCrop" />
 
         <me.sungbin.awesomephotopicker.library.view.CountCheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_half"
-            app:layout_constraintEnd_toEndOf="@+id/iv_photo"
+            app:layout_constraintEnd_toEndOf="@+id/iv_tile_photo"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

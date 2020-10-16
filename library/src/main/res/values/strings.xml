@@ -3,11 +3,11 @@
     <string name="image_selected">image-selected</string>
     <string name="image_cancel">image-cancel</string>
     <string name="image_photo">photo</string>
+    <string name="image_tile_gallery">tile-gallery</string>
 
     <string name="dialog_done">완료</string>
     <string name="dialog_choose_photo">사진 선택</string>
 
     <string name="toast_select_max_count">%1$d개 까지 선택 가능합니다</string>
     <string name="toast_select_min_count">%1$d개 이상 선택해야 합니다</string>
-
 </resources>

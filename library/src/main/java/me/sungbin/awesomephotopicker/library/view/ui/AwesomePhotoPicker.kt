@@ -63,13 +63,14 @@ class AwesomePhotoPicker : BottomSheetDialogFragment() {
         }
 
         val tiles = ArrayList<Tile>()
+        tiles.add(Tile(null, TileType.GALLERY))
         PhotoUtil.getAllPath(requireContext()).map {
             tiles.add(Tile(it, TileType.PHOTO))
         }
 
         rv_gallery.apply {
             adapter = PhotoAdapter(tiles, requireActivity())
-            val spacingInPixels = resources.getDimensionPixelSize(R.dimen.margin_half)
+            val spacingInPixels = resources.getDimensionPixelSize(R.dimen.margin_twice_half)
             addItemDecoration(GridSpacingItemDecoration(3, spacingInPixels, false, 0))
         }
     }

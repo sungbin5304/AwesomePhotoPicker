@@ -6,10 +6,13 @@ import android.view.ViewGroup
 import androidx.annotation.NonNull
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import me.sungbin.awesomephotopicker.library.R
 import me.sungbin.awesomephotopicker.library.databinding.LayoutTileBinding
 import me.sungbin.awesomephotopicker.library.model.Tile
 import me.sungbin.awesomephotopicker.library.model.TileType
+import me.sungbin.awesomephotopicker.library.util.PhotoUtil
 
 
 /**
@@ -28,11 +31,24 @@ class PhotoAdapter(
             with(binding) {
                 when (tile.type) {
                     TileType.PHOTO -> {
-                        ivPhoto.setImageURI(tile.uri)
+                        // ivTilePhoto.setImageURI(tile.uri)
+                        Glide.with(ivTilePhoto.context)
+                            .load(PhotoUtil.convertUriToPath(ivTilePhoto.context, tile.uri!!))
+                            .thumbnail(0.1f)
+                            .apply(
+                                RequestOptions().centerCrop()
+                                    .placeholder(R.drawable.ic_baseline_photo_library_24)
+                                    .error(R.drawable.ic_baseline_error_24)
+                            )
+                            .into(ivTilePhoto)
+                        // todo: 위 코드로 랙 및 오류 수정 가능
                     }
                     TileType.CAMERA -> {
+
                     }
                     TileType.GALLERY -> {
+                        // ivTilePhoto.visibility = View.GONE
+                        // ivTileGallery.visibility = View.VISIBLE
                     }
                 }
             }
